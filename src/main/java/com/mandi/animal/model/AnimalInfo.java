@@ -31,6 +31,10 @@ public class AnimalInfo {
 	private String state;
 	@NotNull
 	private String breed;
+	@NotNull
+	private String age;
+	@NotNull
+	private String milk;
 
 	public String getState() {
 		return state;
