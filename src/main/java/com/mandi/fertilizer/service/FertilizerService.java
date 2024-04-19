@@ -12,4 +12,7 @@ public interface FertilizerService {
 	public FertilizerInfo saveFertilizerInfo(FertilizerInfo fetFertilizerInfo);
 
 	public FertilizerInfo updateFertilizerInfo(FertilizerInfo fetFertilizerInfo);
+		
+	public FertilizerInfo deleteFertilizerInfo(Long id);
+	
 }

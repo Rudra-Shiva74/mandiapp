@@ -1,8 +1,20 @@
 package com.mandi.animal.controller;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,15 +23,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.mandi.animal.model.AnimalInfo;
 import com.mandi.animal.model.DeleteAnimal;
 import com.mandi.animal.service.AnimalService;
 
+import io.micrometer.common.util.StringUtils;
+
 @RestController
 @RequestMapping("/api")
-@CrossOrigin
+@CrossOrigin("*")
 public class AnimalController {
 	@Autowired
 	private AnimalService animalService;
@@ -28,11 +44,55 @@ public class AnimalController {
 	public List<AnimalInfo> getAllAnimal() {
 		return this.animalService.getAllAnimalInfo();
 	}
-
-	@PostMapping("/animal")
+	
+	@PostMapping("/animalg")
 	public AnimalInfo saveAnimalInfo(@RequestBody AnimalInfo animalInfo) {
 		return this.animalService.saveAnimalInfo(animalInfo);
 	}
+	
+	  @PostMapping("/animal")
+	    public AnimalInfo saveAnimalInfo(@RequestParam("name") String name,
+	                                     @RequestParam("qnt") int qnt,
+	                                     @RequestParam("price") int price,
+	                                     @RequestParam("image") MultipartFile file,
+	                                     @RequestParam("farmerid") String farmerid,
+	                                     @RequestParam("state") String state,
+	                                     @RequestParam("breed") String breed,
+	                                     @RequestParam("age") String age,
+	                                     @RequestParam("milk") String milk) {
+
+	        AnimalInfo animalInfo = new AnimalInfo();
+	        animalInfo.setName(name);
+	        animalInfo.setQnt(qnt);
+	        animalInfo.setPrice(price);
+	        animalInfo.setFarmerid(farmerid);
+	        animalInfo.setState(state);
+	        animalInfo.setBreed(breed);
+	        animalInfo.setAge(age);
+	        animalInfo.setMilk(milk);
+
+	        if (!file.isEmpty()) {
+	            try {
+	                String uploadDir = "src/main/resources/static/animal/";
+	                File dir = new File(uploadDir);
+	                if (!dir.exists()) {
+	                    dir.mkdirs();
+	                }
+	                String fileName = file.getOriginalFilename();
+	                File uploadedFile = new File(uploadDir + fileName);
+	                try (FileOutputStream fos = new FileOutputStream(uploadedFile)) {
+	                    fos.write(file.getBytes());
+	                }
+	                animalInfo.setImage(fileName);
+	            } catch (IOException e) {
+	                e.printStackTrace();
+	                throw new RuntimeException("Failed to upload image!");
+	            }
+	        }
+
+	        return animalService.saveAnimalInfo(animalInfo);
+	    }
+	
 
 	@PutMapping("/animal")
 	public AnimalInfo updateAnimalInfo(@RequestBody AnimalInfo animalInfo) {

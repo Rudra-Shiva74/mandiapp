@@ -22,6 +22,6 @@ public interface AnimalRepo extends JpaRepository<AnimalInfo, Long> {
 	public List<AnimalInfo> getAnimalBybreed(String breed);
 
 	@Query("SELECT u FROM AnimalInfo u  ORDER BY u.id DESC LIMIT :top") 
-	public List<AnimalInfo> getTop(int top);
+	public List<AnimalInfo> getTop(int top); 
 
 }

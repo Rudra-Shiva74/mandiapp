@@ -1,6 +1,7 @@
 package com.mandi.fertilizer.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -27,6 +28,17 @@ public class FertilizerServiceImp implements FertilizerService {
 	public FertilizerInfo updateFertilizerInfo(FertilizerInfo fertilizerInfo) {
 		return this.fertilizerRepo.saveAndFlush(fertilizerInfo);
 	}
+
+
+
+	@Override
+	public FertilizerInfo deleteFertilizerInfo(Long id) {
+		
+		this.fertilizerRepo.deleteById(id);
+		return null;
+	}
+	
+	
 
 	
 

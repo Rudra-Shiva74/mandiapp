@@ -1,9 +1,4 @@
 package com.mandi.fertilizer.model;
-
-import java.sql.Date;
-
-import org.springframework.format.annotation.DateTimeFormat;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,47 +10,24 @@ public class FertilizerInfo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+	
 	@NotNull
 	private String name;
-	@NotNull
+	
 	private int qnt;
-	@NotNull
-	@DateTimeFormat(pattern = "dd-MM-yyyy")
-	private Date date;
-	@NotNull
+	
 	private int price;
+	
 	private String image;
-	@NotNull
+	
 	private String farmerid;
-	@NotNull
-	private String state;
-	@NotNull
-	private String breed;
 
-	@Override
-	public String toString() {
-		return "FertilizerInfo [id=" + id + ", name=" + name + ", qnt=" + qnt + ", date=" + date + ", price=" + price
-				+ ", image=" + image + ", farmerid=" + farmerid + "]";
-	}
+	private String state;
+	
+	private String type;
 
 	public long getId() {
 		return id;
-	}
-
-	public String getState() {
-		return state;
-	}
-
-	public void setState(String state) {
-		this.state = state;
-	}
-
-	public String getBreed() {
-		return breed;
-	}
-
-	public void setBreed(String breed) {
-		this.breed = breed;
 	}
 
 	public void setId(long id) {
@@ -76,14 +48,6 @@ public class FertilizerInfo {
 
 	public void setQnt(int qnt) {
 		this.qnt = qnt;
-	}
-
-	public Date getDate() {
-		return date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
 	}
 
 	public int getPrice() {
@@ -109,5 +73,33 @@ public class FertilizerInfo {
 	public void setFarmerid(String farmerid) {
 		this.farmerid = farmerid;
 	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+	
+
+	@Override
+	public String toString() {
+		return "FertilizerInfo [id=" + id + ", name=" + name + ", qnt=" + qnt + ", price=" + price + ", image=" + image
+				+ ", farmerid=" + farmerid + ", state=" + state + ", type=" + type + "]";
+	}
+	
+
+
+	
+	
 
 }

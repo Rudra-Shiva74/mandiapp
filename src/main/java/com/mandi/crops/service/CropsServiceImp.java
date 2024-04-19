@@ -1,6 +1,7 @@
 package com.mandi.crops.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -28,5 +29,18 @@ public class CropsServiceImp implements CropsService {
 	public List<CropsInfo> getAllCropsInfo() {
 		return this.cropsRepo.findAll();
 	}
+
+
+	@Override
+	public void deleteCropsInfo(Long id) {
+	
+		this.cropsRepo.deleteById(id);
+		
+	}
+	
+	
+
+	
+	
 
 }
