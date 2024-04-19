@@ -20,8 +20,13 @@ public class FarmerServiceImp implements FarmerService {
 	}
 
 	@Override
-	public FarmerInfo updateFarmer(FarmerInfo farmerInfo) {
-		return this.farmerRepo.saveAndFlush(farmerInfo);
+	public boolean updateFarmer(FarmerInfo farmerInfo) {
+		try {
+			this.farmerRepo.saveAndFlush(farmerInfo);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 
 	@Override
@@ -50,6 +55,12 @@ public class FarmerServiceImp implements FarmerService {
 			throw new RuntimeException("No User Exist..!");
 		}
 		return false;
+	}
+
+	@Override
+	public int updatePassword(String id, String oldPass, String newPass) {
+		System.out.println(id);
+		return this.farmerRepo.updatePassword(id, oldPass, newPass);
 	}
 
 }

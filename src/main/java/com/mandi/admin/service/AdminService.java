@@ -7,4 +7,6 @@ import com.mandi.admin.model.AdminInfo;
 @Service
 public interface AdminService {
 	public AdminInfo loginAdmin(String id, String pass);
+
+	public boolean updateAdmin(AdminInfo adminInfo);
 }

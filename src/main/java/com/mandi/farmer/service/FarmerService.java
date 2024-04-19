@@ -14,7 +14,9 @@ public interface FarmerService {
 
 	public List<FarmerInfo> getAllFarmer();
 
-	public FarmerInfo updateFarmer(FarmerInfo farmerInfo);
+	public boolean updateFarmer(FarmerInfo farmerInfo);
 
 	public boolean deleteFarmer(Long id);
+
+	public int updatePassword(String id, String oldPass, String newPass);
 }

@@ -7,8 +7,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mandi.farmer.model.FarmerInfo;
@@ -39,5 +41,17 @@ public class FarmerController {
 	@GetMapping("/farmer")
 	public List<FarmerInfo> getAllFarmer() {
 		return this.farmerService.getAllFarmer();
+	}
+
+	@PutMapping("/farmer")
+	public boolean updateFarmer(@RequestBody FarmerInfo farmerInfo) {
+		return this.farmerService.updateFarmer(farmerInfo);
+	}
+
+	@PostMapping("updatepasswordfarmer")
+	public int updatePasswordFarmer(@RequestParam("farmerid") String farmerId,
+			@RequestParam("oldpass") String oldPass, @RequestParam("newpass") String newPass) {
+		System.out.println(oldPass);
+		return this.farmerService.updatePassword(farmerId, oldPass, newPass);
 	}
 }

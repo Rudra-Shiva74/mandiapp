@@ -17,4 +17,14 @@ public class AdminServiceImp implements AdminService {
 		return this.adminRepo.loinAdmin(id, pass);
 	}
 
+	@Override
+	public boolean updateAdmin(AdminInfo adminInfo) {
+		try {
+			this.adminRepo.save(adminInfo);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
 }
