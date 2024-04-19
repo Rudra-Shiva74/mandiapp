@@ -64,4 +64,9 @@ public class AnimalServiceImp implements AnimalService {
 		return this.animalRepo.getTop(top);
 	}
 
+	@Override
+	public List<AnimalInfo> getTopName(String name) {
+		return this.animalRepo.getTopName(name, 10);
+	}
+
 }

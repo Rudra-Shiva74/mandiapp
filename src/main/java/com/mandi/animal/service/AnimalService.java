@@ -25,4 +25,6 @@ public interface AnimalService {
 	public List<AnimalInfo> getAnimalBybreed(String breed);
 
 	public List<AnimalInfo> getTop(int top);
+
+	public List<AnimalInfo> getTopName(String name);
 }
