@@ -21,6 +21,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.mandi.animal.model.AnimalInfo;
 import com.mandi.crops.model.CropsInfo;
 import com.mandi.crops.service.CropsService;
 
@@ -36,6 +38,7 @@ public class CropsController {
 	public CropsInfo saveCrops(@RequestParam("name") String name,
 	                           @RequestParam("price") int price,
 	                           @RequestParam("qnt") int qnt,
+	                           @RequestParam("type") String type,
 	                           @RequestParam("farmerid") String farmerid,
 	                           @RequestParam("state") String state,
 	                           @RequestParam("variety") String variety,
@@ -45,6 +48,7 @@ public class CropsController {
 	    crop.setName(name);
 	    crop.setPrice(price);
 	    crop.setQnt(qnt);
+	    crop.setType(type); // Setting the type
 	    crop.setFarmerid(farmerid);
 	    crop.setState(state);
 	    crop.setVariety(variety);
@@ -88,6 +92,11 @@ public class CropsController {
 	public void deleteCrops(@PathVariable("id")Long id) {
 		
 		cropsService.deleteCropsInfo(id);
+	}
+	
+	@GetMapping("/croptopname/{type}")
+	public List<CropsInfo> getTopName(@PathVariable("type") String type) {
+		return this.cropsService.getTopType(type);
 	}
 	
 

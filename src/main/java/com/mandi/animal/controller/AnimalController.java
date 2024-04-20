@@ -116,4 +116,5 @@ public class AnimalController {
 	public List<AnimalInfo> getTopName(@PathVariable("name") String name) {
 		return this.animalService.getTopName(name);
 	}
+	
 }

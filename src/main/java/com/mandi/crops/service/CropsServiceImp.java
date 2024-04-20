@@ -37,6 +37,11 @@ public class CropsServiceImp implements CropsService {
 		this.cropsRepo.deleteById(id);
 		
 	}
+
+	@Override
+	public List<CropsInfo> getTopType(String type) {
+		return this.cropsRepo.getTopType(type,10);
+	}
 	
 	
 

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.mandi.crops.model.CropsInfo;
 import com.mandi.fertilizer.model.FertilizerInfo;
 import com.mandi.fertilizer.service.FertilizerService;
 
@@ -89,6 +90,11 @@ public class FertilizerController {
 	public void deleteFertlizerInfo(@PathVariable("id")long id) {
 		this.fertilizerService.deleteFertilizerInfo(id);
 	}
+	
+//	@GetMapping("/fartilizertopname/{type}")
+//	public List<CropsInfo> getTopName(@PathVariable("type") String type) {
+//		return this.fertilizerService.getTopType(type);
+//	}
 	
 	
 	

@@ -1,4 +1,5 @@
 package com.mandi.crops.service;
+
 import java.util.List;
 import org.springframework.stereotype.Service;
 import com.mandi.crops.model.CropsInfo;
@@ -10,9 +11,9 @@ public interface CropsService {
 	public CropsInfo updateCropsInfo(CropsInfo cropsInfo);
 
 	public List<CropsInfo> getAllCropsInfo();
-	
-	
+
 	public void deleteCropsInfo(Long id);
 
-	
+	public List<CropsInfo> getTopType(String type);
+
 }

@@ -8,5 +8,6 @@ public class MandiappApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(MandiappApplication.class, args);
+		System.out.println("MandiApp");
 	}
 }
