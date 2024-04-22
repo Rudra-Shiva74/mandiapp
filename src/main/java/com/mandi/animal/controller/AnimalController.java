@@ -82,9 +82,9 @@ public class AnimalController {
 		return this.animalService.updateAnimalInfo(animalInfo);
 	}
 
-	@DeleteMapping("/animal")
-	public boolean deleteAnimal(@RequestBody DeleteAnimal deleteAnimal) {
-		return this.animalService.deleteAnimal(deleteAnimal.getId(), deleteAnimal.getFarmerid());
+	@DeleteMapping("/animal/{id}")
+	public void deleteAnimal(@PathVariable("id")Long id) {
+		this.animalService.deleteAnimalInfo(id);
 	}
 
 	@GetMapping("/animalprice/{price}")

@@ -29,15 +29,18 @@ public class AnimalServiceImp implements AnimalService {
 		return this.animalRepo.findAll();
 	}
 
-	@Override
-	public boolean deleteAnimal(Long id, String farmerid) {
-		try {
-			this.animalRepo.deleteAnimalbyidAndfarmerid(id, farmerid);
-			return true;
-		} catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-	}
+	
+//	@Override
+//	public boolean deleteAnimal(Long id, String farmerid) {
+//		try {
+//			this.animalRepo.deleteAnimalbyidAndfarmerid(id, farmerid);
+//			return true;
+//		} catch (Exception e) {
+//			throw new RuntimeException(e);
+//		}
+//	}
+	
+	
 
 	@Override
 	public List<AnimalInfo> getAnimaByPrice(int price) {
@@ -69,4 +72,13 @@ public class AnimalServiceImp implements AnimalService {
 		return this.animalRepo.getTopName(name, 10);
 	}
 
+	@Override
+	public void deleteAnimalInfo(Long id) {
+	
+		this.animalRepo.deleteById(id);
+	}
+
+	
+	
+	
 }

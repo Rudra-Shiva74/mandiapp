@@ -13,8 +13,11 @@ public interface AnimalService {
 	public AnimalInfo updateAnimalInfo(AnimalInfo animalInfo);
 
 	public List<AnimalInfo> getAllAnimalInfo();
+	
+	public void deleteAnimalInfo(Long id);
 
-	public boolean deleteAnimal(Long id, String farmerid);
+//	public boolean deleteAnimal(Long id, String farmerid);
+	
 
 	public List<AnimalInfo> getAnimaByPrice(int price);
 
